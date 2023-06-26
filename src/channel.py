@@ -30,8 +30,7 @@ class Channel:
     @classmethod
     def get_service(cls):
         youtube = build('youtube', 'v3', developerKey=api_key)
-        channel = youtube.channels().list(id=cls.channel_id, part='snippet,statistics').execute()
-        return channel
+        return youtube
 
     def to_json(self, data):
         with open(data, "a") as f:
