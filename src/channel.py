@@ -32,31 +32,39 @@ class Channel:
 
     @classmethod
     def get_service(cls):
+        """ Объект для работы с API вне класса"""
         youtube = build('youtube', 'v3', developerKey=api_key)
         return youtube
 
     def to_json(self, data):
-        with open(data, "a") as f:
-            json.dump(self.channel, f)
+        """Создает файл 'json' с данными по каналу"""
+        with open(data, "a", encoding='utf8') as f:
+            json.dump(self.channel, f, ensure_ascii=False, indent=4)
 
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         print(json.dumps(self.channel, indent=2, ensure_ascii=False))
 
     def __add__(self, other):
+        """Складывает количество подписчиков экземпляров класса"""
         return int(self.subscriberCount) + int(other.subscriberCount)
 
     def __sub__(self, other):
+        """Выводит разницу количество подписчиков экземпляров класса"""
         return int(self.subscriberCount) - int(other.subscriberCount)
 
     def __lt__(self, other):
+        """Сравнивает меньше ли количество подписчиков одного экземпляра класса с другим экземпляром"""
         return self.subscriberCount < other.subscriberCount
 
     def __le__(self, other):
+        """Сравнивает меньше или равно количество подписчиков экземпляров класса с другим экземпляром"""
         return self.subscriberCount <= other.subscriberCount
 
     def __gt__(self, other):
+        """Сравнивает больше ли количество подписчиков одного экземпляра класса с другим экземпляром"""
         return self.subscriberCount > other.subscriberCount
 
     def __ge__(self, other):
+        """Сравнивает больше или равно количество подписчиков экземпляров класса с другим экземпляром"""
         return self.subscriberCount >= other.subscriberCount
