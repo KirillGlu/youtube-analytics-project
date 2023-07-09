@@ -19,8 +19,8 @@ class Channel:
         self.title = self.channel["items"][0]['snippet']["title"]
         self.description = self.channel["items"][0]['snippet']["description"]
         self.url = self.channel["items"][0]['snippet']["customUrl"]
-        self.viewCount = self.channel["items"][0]['statistics']["viewCount"]
-        self.subscriberCount = self.channel["items"][0]['statistics']["subscriberCount"]
+        self.view_count = self.channel["items"][0]['statistics']["viewCount"]
+        self.subscriber_count = self.channel["items"][0]['statistics']["subscriberCount"]
         self.video_count = self.channel["items"][0]['statistics']["videoCount"]
 
     def __str__(self):
@@ -47,24 +47,24 @@ class Channel:
 
     def __add__(self, other):
         """Складывает количество подписчиков экземпляров класса"""
-        return int(self.subscriberCount) + int(other.subscriberCount)
+        return int(self.subscriber_count) + int(other.subscriber_count)
 
     def __sub__(self, other):
         """Выводит разницу количество подписчиков экземпляров класса"""
-        return int(self.subscriberCount) - int(other.subscriberCount)
+        return int(self.subscriber_count) - int(other.subscriber_count)
 
     def __lt__(self, other):
         """Сравнивает меньше ли количество подписчиков одного экземпляра класса с другим экземпляром"""
-        return self.subscriberCount < other.subscriberCount
+        return self.subscriber_count < other.subscriber_count
 
     def __le__(self, other):
         """Сравнивает меньше или равно количество подписчиков экземпляров класса с другим экземпляром"""
-        return self.subscriberCount <= other.subscriberCount
+        return self.subscriber_count <= other.subscriber_count
 
     def __gt__(self, other):
         """Сравнивает больше ли количество подписчиков одного экземпляра класса с другим экземпляром"""
-        return self.subscriberCount > other.subscriberCount
+        return self.subscriber_count > other.subscriber_count
 
     def __ge__(self, other):
         """Сравнивает больше или равно количество подписчиков экземпляров класса с другим экземпляром"""
-        return self.subscriberCount >= other.subscriberCount
+        return self.subscriber_count >= other.subscriber_count

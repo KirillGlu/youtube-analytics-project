@@ -1,5 +1,7 @@
 from src.channel import Channel
 import json
+
+
 class Video(Channel):
 
     def __init__(self, video_id: str) -> None:
@@ -9,8 +11,8 @@ class Video(Channel):
                                                       part='snippet,statistics,contentDetails,topicDetails').execute()
         self.id = self.video["items"][0]['id']
         self.title = self.video["items"][0]['snippet']["title"]
-        self.viewCount = self.video["items"][0]['statistics']["viewCount"]
-        self.likeCount = self.video["items"][0]['statistics']["likeCount"]
+        self.view_count = self.video["items"][0]['statistics']["viewCount"]
+        self.like_count = self.video["items"][0]['statistics']["likeCount"]
 
     def __str__(self):
         return f"{self.title}"
@@ -18,6 +20,7 @@ class Video(Channel):
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
         print(json.dumps(self.video, indent=2, ensure_ascii=False))
+
 
 class PLVideo(Video):
 
